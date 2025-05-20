@@ -31,7 +31,8 @@ func TestBatchGetStockTradeInfo(t *testing.T) {
 }
 
 func TestGetHistoryStockTradeInfo(t *testing.T) {
-	stockCode := "600600.SH"
+	stockCode := "600600"
+	market := "SH"
 	const (
 		M1    = 3
 		M2    = 6
@@ -45,7 +46,7 @@ func TestGetHistoryStockTradeInfo(t *testing.T) {
 	ctx := context.Background()
 
 	// 获取历史股票交易信息
-	info, err := GetHistoryStockTradeInfo(ctx, stockCode, stock_enums.TimeLevel_1Day, "20250101", "20250509")
+	info, err := GetHistoryStockTradeInfo(ctx, stockCode, market, stock_enums.TimeLevel_1Day, "20250101", "20250509")
 	if err != nil {
 		t.Fatalf("获取股票交易信息失败: %v", err)
 		return

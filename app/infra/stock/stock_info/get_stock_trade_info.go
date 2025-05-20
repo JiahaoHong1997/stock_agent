@@ -91,12 +91,12 @@ func BatchGetStockTradeInfo(ctx context.Context, stockCodes []string) ([]*stock_
 	return realTimeInfos, nil
 }
 
-func GetHistoryStockTradeInfo(ctx context.Context, stockCode string, timeLevel stock_enums.TimeLevel, startTime, endTime string) ([]*stock_params.HistoryStockTradeInfoResponse, error) {
+func GetHistoryStockTradeInfo(ctx context.Context, stockCode, market string, timeLevel stock_enums.TimeLevel, startTime, endTime string) ([]*stock_params.HistoryStockTradeInfoResponse, error) {
 	// 创建 HTTP 客户端
 	client := &http.Client{}
 
 	// 构建请求
-	req, err := http.NewRequest("GET", fmt.Sprintf(stock_constants.HistoryStockTradeInfoURL, stockCode, timeLevel, "f", stock_constants.License, startTime, endTime), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf(stock_constants.HistoryStockTradeInfoURL, fmt.Sprintf("%s.%s", stockCode, market), timeLevel, "f", stock_constants.License, startTime, endTime), nil)
 	if err != nil {
 		fmt.Println("创建请求失败:", err)
 		return nil, err
