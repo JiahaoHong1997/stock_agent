@@ -17,12 +17,12 @@ type IStrategy interface {
 	SetStockIndicators()
 
 	//  ------ 主要策略（择时、选股、B1买入、设置止损、止盈放飞一半（BBI以上两根中长阳线）、止盈完全放飞（跌破BBI连续两根k线））----------
+	// GetStockTradingDataForPastXDays 获取过去X天的股票交易数据
+	GetStockTradingDataForPastXDays(ctx context.Context, stockCode string, x int) error
 	// SelectMarketTiming 择时
 	SelectMarketTiming(ctx context.Context) error
 	// SelectStock 选股
 	SelectStock(ctx context.Context) (string, error)
-	// GetStockTradingDataForPastXDays 获取过去X天的股票交易数据
-	GetStockTradingDataForPastXDays(ctx context.Context, stockCode string, x int) error
 	// B1Buy B1买入点
 	B1Buy(ctx context.Context) error
 	// RiskControl 风控（止损）

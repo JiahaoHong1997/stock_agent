@@ -8,4 +8,5 @@ type StockTradeContext struct {
 	HighPrices     []float64                        // 最高价
 	LowPrices      []float64                        // 最低价
 	JValues        []float64                        // J值
+	BbiValues      []float64                        // BBI值
 }
