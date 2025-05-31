@@ -18,7 +18,7 @@ func TestLocalInvokeLLM(t *testing.T) {
 		Timeout: 30 * time.Second,         // 请求超时时间
 
 		// 模型配置
-		Model: llm_enums.DeepSeekR1_14b.String(), // 模型名称
+		Model: llm_enums.QWen3_14b.String(), // 模型名称
 		//Format: json.RawMessage("json"),           // 输出格式（可选）
 
 	})
@@ -42,7 +42,7 @@ func TestLocalInvokeLLM(t *testing.T) {
 
 func TestLocalInvokeLLMGenerate(t *testing.T) {
 	llm, _ := NewMyChatModel(new(MyChatModelConfig))
-	llm = llm.Model(llm_enums.DeepSeekR1_14b.String())
+	llm = llm.Model(llm_enums.QWen3_14b.String())
 	messages := []*schema.Message{
 		schema.SystemMessage("你是一个助手"),
 		schema.UserMessage("介绍一下 Ollama"),
